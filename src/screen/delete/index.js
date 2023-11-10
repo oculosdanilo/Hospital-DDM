@@ -1,33 +1,31 @@
 import { useRoute, useNavigation } from "@react-navigation/native";
-import styles from "./style";
-
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function Delete() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Deletar Paciente</Text>
 
-return (
-<View style={styles.container}>
-  <Text style={styles.text}>Deletar Paciente</Text>
-
-  <form>
-  <label>
-    Número Beneficiário:
-    <input type="text" name="numBeneficiario" />
-  </label>
-  <input type="submit" value="Deletar" />
-</form>
-</View>
-);
- 
+      <form>
+        <label>
+          Número Beneficiário:
+          <input type="text" name="numBeneficiario" />
+        </label>
+        <input type="submit" value="Deletar" />
+      </form>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#141a29",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   text: {
-    color: "#ffffff"
-  }
+    color: "#ffffff",
+  },
 });

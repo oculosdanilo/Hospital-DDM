@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 
 
@@ -10,7 +10,7 @@ export default function Get() {
 
 return (
 <View style={styles.container}>
-  <Text style={styles.text}>Deletar Paciente</Text>
+  <Text style={styles.text}> Paciente</Text>
 
 
 </View>
