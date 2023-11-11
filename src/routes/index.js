@@ -5,41 +5,66 @@ import Home from "../screen/Home";
 import Get from "../screen/get";
 import Put from "../screen/put";
 import Post from "../screen/post";
-import Delete from "../screen/delete";
+import Delete from "../screen/Delete";
 
 export default function Routes() {
   const stack = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <stack.Navigator>
+      <stack.Navigator initialRouteName="Home">
         <stack.Screen
-          options={{ headerShown: false, title: "Início" }}
           name="home"
           component={Home}
+          options={{
+            headerStyle: {
+              backgroundColor: '#121212'
+            },
+            headerTintColor: '#fff'
+          }}
         />
 
         <stack.Screen
-          options={{ title: "Put", headerShown: false }}
           name="put"
           component={Put}
+          options={{
+            headerStyle: {
+              backgroundColor: '#121212'
+            },
+            headerTintColor: '#fff'
+          }}
         />
 
         <stack.Screen
-          options={{ title: "Get", headerShown: false }}
           name="get"
           component={Get}
+          options={{
+            headerStyle: {
+              backgroundColor: '#121212'
+            },
+            headerTintColor: '#fff'
+          }}
         />
 
         <stack.Screen
-          options={{ title: "Delete", headerShown: false }}
           name="delete"
           component={Delete}
+          options={{
+            headerStyle: {
+              backgroundColor: '#121212'
+            },
+            headerTintColor: '#fff'
+          }}
         />
         <stack.Screen
-          options={{ title: "Post", headerShown: false }}
           name="post"
           component={Post}
+          options={{
+            headerStyle: {
+              backgroundColor: '#121212'
+            },
+            headerTintColor: '#fff'
+          }}
         />
       </stack.Navigator>
     </NavigationContainer>

@@ -21,13 +21,16 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#141a29",
-    alignItems: "center"
+    backgroundColor: "#131e4a",
+    alignItems: "center",
+    flexDirection: "column",
   },
-
   text: {
-    color: "#ffffff"
-  }
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "white",
+  },
 });
-
 
