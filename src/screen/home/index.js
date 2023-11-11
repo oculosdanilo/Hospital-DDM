@@ -11,17 +11,26 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Métodos HTTP</Text>
+      <Text style={styles.title}>Métodos HTTP</Text>
 
       <View>
-      <Button title="Get" onPress={ () => navigation.navigate('get')}>
-        </Button>
-        <Button title="Post" onPress={ () => navigation.navigate('post')}>
-        </Button>
-        <Button title="Put" onPress={ () => navigation.navigate('put')}>
-        </Button>
-        <Button title="Delete" onPress={ () => navigation.navigate('delete')}>
-        </Button>
+
+      <TouchableOpacity style={styles.btn} title="Get" onPress={() => navigation.navigate('get')}>
+        <Text style={styles.text}>GET</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btn} title="Post" onPress={ () => navigation.navigate('post')}>
+        <Text style={styles.text}>POST</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btn} title="Put" onPress={ () => navigation.navigate('put')}>
+        <Text style={styles.text}>PUT</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btn} title="Delete" onPress={ () => navigation.navigate('delete')}>
+        <Text style={styles.text}>DELETE</Text>
+      </TouchableOpacity>
+
               
       </View>
     </View>
@@ -32,15 +41,31 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#131e4a",
     alignItems: "center",
     flexDirection: "column",
+    justifyContent: "center"
+  },
+  title: {
+    marginTop: 10,
+    fontSize: 23,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    marginBottom: 15
   },
   text: {
     fontSize: 16,
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "white",
+    color: "#fff"
+  },
+  btn: {
+    alignItems: 'center',
+    backgroundColor: '#37ff5e',
+    padding: 10,
+    marginBottom: 5,
+    marginTop: 10,
+    width: '150px',
   },
 });

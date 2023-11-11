@@ -10,7 +10,7 @@ export default function Get() {
 
 return (
 <View style={styles.container}>
-  <Text style={styles.text}> Paciente</Text>
+  <Text style={styles.title}> Paciente</Text>
 
 
 </View>
@@ -21,16 +21,17 @@ return (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#131e4a",
     alignItems: "center",
     flexDirection: "column",
+    justifyContent: "center"
   },
-  text: {
-    fontSize: 16,
+  title: {
+    marginTop: 10,
+    marginBottom: 15,
+    fontSize: 23,
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "white",
   },
 });
 
