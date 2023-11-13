@@ -13,7 +13,7 @@ export default function Delete() {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>Deletar</Text>
+      <Text style={styles.title}>Deletar Paciente</Text>
 
       <Controller
         control={control}
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
+    color: "red"
   },
   
   input: {

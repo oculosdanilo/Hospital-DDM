@@ -18,7 +18,7 @@ export default function Routes() {
           component={Home}
           options={{
             headerStyle: {
-              backgroundColor: '#121212'
+              backgroundColor: '#50C878'
             },
             headerTintColor: '#fff'
           }}
@@ -29,7 +29,7 @@ export default function Routes() {
           component={Put}
           options={{
             headerStyle: {
-              backgroundColor: '#121212'
+              backgroundColor: '#50C878'
             },
             headerTintColor: '#fff'
           }}
@@ -40,7 +40,7 @@ export default function Routes() {
           component={Get}
           options={{
             headerStyle: {
-              backgroundColor: '#121212'
+              backgroundColor: '#50C878'
             },
             headerTintColor: '#fff'
           }}
@@ -51,7 +51,7 @@ export default function Routes() {
           component={Delete}
           options={{
             headerStyle: {
-              backgroundColor: '#121212'
+              backgroundColor: '#50C878'
             },
             headerTintColor: '#fff'
           }}
@@ -61,7 +61,7 @@ export default function Routes() {
           component={Post}
           options={{
             headerStyle: {
-              backgroundColor: '#121212'
+              backgroundColor: '#50C878'
             },
             headerTintColor: '#fff'
           }}
