@@ -1,11 +1,9 @@
 import React from "react";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../screen/Home";
+import Home from "../screen/home";
 import Get from "../screen/get";
-import Put from "../screen/put";
 import Post from "../screen/post";
-import Delete from "../screen/Delete";
 
 export default function Routes() {
   const stack = createStackNavigator();
@@ -18,20 +16,9 @@ export default function Routes() {
           component={Home}
           options={{
             headerStyle: {
-              backgroundColor: '#50C878'
+              backgroundColor: "#50C878",
             },
-            headerTintColor: '#fff'
-          }}
-        />
-
-        <stack.Screen
-          name="put"
-          component={Put}
-          options={{
-            headerStyle: {
-              backgroundColor: '#50C878'
-            },
-            headerTintColor: '#fff'
+            headerTintColor: "#fff",
           }}
         />
 
@@ -40,30 +27,20 @@ export default function Routes() {
           component={Get}
           options={{
             headerStyle: {
-              backgroundColor: '#50C878'
+              backgroundColor: "#50C878",
             },
-            headerTintColor: '#fff'
+            headerTintColor: "#fff",
           }}
         />
 
-        <stack.Screen
-          name="delete"
-          component={Delete}
-          options={{
-            headerStyle: {
-              backgroundColor: '#50C878'
-            },
-            headerTintColor: '#fff'
-          }}
-        />
         <stack.Screen
           name="post"
           component={Post}
           options={{
             headerStyle: {
-              backgroundColor: '#50C878'
+              backgroundColor: "#50C878",
             },
-            headerTintColor: '#fff'
+            headerTintColor: "#fff",
           }}
         />
       </stack.Navigator>

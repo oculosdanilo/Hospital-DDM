@@ -1,41 +1,19 @@
-import React from "react";
-import { useRoute, useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList } from "react-native";
-import { useForm, Controller } from 'react-hook-form';
-import CardPaciente from "./paciente";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import CardPaciente from "../../components/paciente";
+import { _get } from "../../API/get";
 
-export default function Delete() {
-  const { control, handleSubmit, formState: { errors } } = useForm({})
+export default function Get() {
+  const [pacientes, setPacientes] = useState([]);
 
-  function cadastrar(data) {
-    console.log(data);
-  }
-  const Pacientes = [
-    {
-      nomePaciente: "Cássia",
-      enderecoPaciente:"Rua da Galera",
-      telefonePaciente:11254862568,
-      numeroBeneficiario:125478,
-      doencasPrevias:"Anemia",
-      remedioDeUsoContinuo:"Vitaminas",
-    },
-    {
-      nomePaciente: "Larissa",
-      enderecoPaciente:"Rua da Loira",
-      telefonePaciente:11584752695,
-      numeroBeneficiario:984522,
-      doencasPrevias:"Dor nos Rins",
-      remedioDeUsoContinuo:"Buscopan",
-    },
-    {
-      nomePaciente: "Leandro",
-      enderecoPaciente:"Rua da Virginia",
-      telefonePaciente:11584752695,
-      numeroBeneficiario:8565862,
-      doencasPrevias:"Dor no Pulmão",
-      remedioDeUsoContinuo:"Não tem",
-    },
-  ]
+  useEffect(() => {
+    async function pegarPacientes() {
+      const dados = await _get();
+      setPacientes(dados);
+    }
+
+    pegarPacientes();
+  });
 
   return (
     <View style={styles.container}>
@@ -44,11 +22,12 @@ export default function Delete() {
       <View style={styles.lista}>
         <FlatList
           showsHorizontalScrollIndicator={false}
-          data={Pacientes}
+          data={pacientes}
           keyExtractor={(item) => item.numeroBeneficiario}
           renderItem={({ item }) => (
             <CardPaciente
-            nomePaciente={item.nomePaciente}
+              id={item.id}
+              nomePaciente={item.nomePaciente}
               enderecoPaciente={item.enderecoPaciente}
               telefonePaciente={item.telefonePaciente}
               numeroBeneficiario={item.numeroBeneficiario}
@@ -58,10 +37,7 @@ export default function Delete() {
           )}
         />
       </View>
-        
-</View>
-
-
+    </View>
   );
 }
 
@@ -70,11 +46,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   lista: {
     flex: 1,
-    width: 200
+    width: 200,
   },
   title: {
     marginTop: 20,
@@ -84,7 +60,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
   },
-  
+
   input: {
     height: 40,
     margin: 12,
@@ -92,11 +68,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btn: {
-    alignItems: 'center',
-    backgroundColor: '#37ff5e',
+    alignItems: "center",
+    backgroundColor: "#37ff5e",
     padding: 10,
     marginBottom: 5,
     marginTop: 10,
-    width: '185px',
+    width: "185px",
   },
 });

@@ -1,107 +1,116 @@
-import { TouchableOpacity, StyleSheet, Text, View, TextInput } from "react-native";
-import { useForm, Controller } from 'react-hook-form';
+import { useState } from "react";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+} from "react-native";
+import { _post } from "../../API/post";
 
 export default function Post() {
+  const [nome, setNome] = useState("");
+  const [senha, setSenha] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [endereco, setEndereco] = useState("");
+  const [remedio, setRemedio] = useState("");
+  const [doencas, setDoencas] = useState("");
+  const [benef, setBenef] = useState();
 
-  const { control, handleSubmit, formState: { errors } } = useForm({})
-
-  function cadastrar(data) {
-    console.log(data);
+  async function addPaciente() {
+    const paciente = {
+      nomePaciente: nome,
+      senhaPaciente: senha,
+      enderecoPaciente: endereco,
+      telefonePaciente: telefone,
+      numeroBeneficiario: benef,
+      doencasPrevias: doencas,
+      remedioDeUsoContinuo: remedio,
+    };
+    console.log(await _post(paciente));
+    setNome("");
+    setBenef("");
+    setDoencas("");
+    setEndereco("");
+    setRemedio("");
+    setSenha("");
+    setTelefone("");
   }
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Cadastrar</Text>
 
-      <Text style={styles.title}>Cadastrar</Text>  
-
-<Controller
-        control={control}
-        name="numeroBeneficiario"
-        render={({ field: { onChange, onBlur, value } }) =>
-          <TextInput
-          style={styles.input}
-            onChangeText={onChange}
-            onBlue={onBlur} // chamado quando o text input é tocado
-            value={value}
-            placeholder="Digite o Nº Beneficiário"
-          />
-        }
+      <TextInput
+        style={styles.input}
+        placeholder="Nº Beneficiário"
+        value={benef}
+        onChangeText={(texto) => setBenef(texto)}
       />
 
-<Controller
-        control={control}
-        name="pacienteNome"
-        render={({ field: { onChange, onBlur, value } }) =>
-          <TextInput
-          style={styles.input}
-            onChangeText={onChange}
-            onBlue={onBlur} // chamado quando o text input é tocado
-            value={value}
-            placeholder=" Nome Completo"
-          />
-        }
+      <TextInput
+        style={styles.input}
+        placeholder="Nome Completo"
+        value={nome}
+        onChangeText={(texto) => setNome(texto)}
       />
 
-<Controller
-        control={control}
-        name="telefonePaciente"
-        render={({ field: { onChange, onBlur, value } }) =>
-          <TextInput
-          style={styles.input}
-            onChangeText={onChange}
-            onBlue={onBlur} // chamado quando o text input é tocado
-            value={value}
-            placeholder="Telefone"
-          />
-        }
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        secureTextEntry={true}
+        value={senha}
+        onChangeText={(texto) => setSenha(texto)}
       />
 
-<Controller
-        control={control}
-        name="enderecoPaciente"
-        render={({ field: { onChange, onBlur, value } }) =>
-          <TextInput
-          style={styles.input}
-            onChangeText={onChange}
-            onBlue={onBlur} // chamado quando o text input é tocado
-            value={value}
-            placeholder="Endereço"
-          />
-        }
+      <TextInput
+        style={styles.input}
+        value={telefone}
+        placeholder="Telefone"
+        onChangeText={(texto) => setTelefone(texto)}
       />
 
-<Controller
-        control={control}
-        name="remedioDeUsoContinuo"
-        render={({ field: { onChange, onBlur, value } }) =>
-          <TextInput
-          style={styles.input}
-            onChangeText={onChange}
-            onBlue={onBlur} // chamado quando o text input é tocado
-            value={value}
-            placeholder="Remédio de Uso Contínuo"
-          />
-        }
+      <TextInput
+        style={styles.input}
+        placeholder="Endereço"
+        value={endereco}
+        onChangeText={(texto) => setEndereco(texto)}
       />
 
-<Controller
-        control={control}
-        name="doencasPrevias"
-        render={({ field: { onChange, onBlur, value } }) =>
-          <TextInput
-          style={styles.input}
-            onChangeText={onChange}
-            onBlue={onBlur} // chamado quando o text input é tocado
-            value={value}
-            placeholder="Doenças Prévias"
-          />
-        }
+      <TextInput
+        style={styles.input}
+        value={remedio}
+        placeholder="Remédio de Uso Contínuo"
+        onChangeText={(texto) => setRemedio(texto)}
       />
 
-      <TouchableOpacity style={styles.btn} onPress={handleSubmit(cadastrar)}>
+      <TextInput
+        style={styles.input}
+        value={doencas}
+        placeholder="Doenças Prévias"
+        onChangeText={(texto) => setDoencas(texto)}
+      />
+
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => {
+          if (
+            nome != "" &&
+            senha != "" &&
+            telefone != "" &&
+            endereco != "" &&
+            remedio != "" &&
+            doencas != "" &&
+            benef != 0
+          ) {
+            addPaciente();
+          } else {
+            alert("dados faltantes!");
+          }
+        }}
+      >
         <Text>Cadastrar</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
@@ -111,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   title: {
     marginTop: 10,
@@ -128,11 +137,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btn: {
-    alignItems: 'center',
-    backgroundColor: '#37ff5e',
+    alignItems: "center",
+    backgroundColor: "#37ff5e",
     padding: 10,
     marginBottom: 5,
     marginTop: 10,
-    width: '185px',
+    width: "185px",
   },
 });
